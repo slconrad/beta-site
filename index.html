@@ -95,7 +95,7 @@
 
     <section id="about" class="about">
         <div class="about-text">
-            <h2>Building East Texas</h2>
+            <h2>Building <span style="color:var(--primary)">East Texas</span></h2>
             <p>At Bee Happy Buildings, we don't just weld steel; we forge relationships. Based right here in the heart of East Texas, we understand the unique soil, weather, and needs of our community.</p>
             <p>From the piney woods of Tyler to the oil fields of Longview, our commitment to excellence is unshakeable. We use only US-made steel and offer a lifetime warranty on our frames.</p>
             <ul>
@@ -257,27 +257,40 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            nav.classList.toggle('active');
-        }
+// Function to toggle the menu (Hamburger click)
+function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.classList.toggle('active');
+}
 
-        // Lightbox Functions
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
+// Function to close the menu when a link is clicked
+const navLinks = document.querySelectorAll('.nav-links a');
 
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            lightboxImg.src = imgSrc;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const nav = document.querySelector('.nav-links');
+        // Only remove the 'active' class if it's currently there
+        if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
         }
+    });
+});
 
-        function closeLightbox() {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore background scrolling
-        }
+// Lightbox Functions
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(element) {
+    const imgSrc = element.querySelector('img').src;
+    lightboxImg.src = imgSrc;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeLightbox() {
+    lightbox.style.display = 'none';
+    document.body.style.overflow = 'auto'; 
+}
     </script>
 </body>
 </html>
