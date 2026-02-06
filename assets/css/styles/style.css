@@ -347,6 +347,49 @@ button[type="submit"] {
 
 button[type="submit"]:hover { background: #e05e2b; }
 
+/* --- CONTACT LAYOUT --- */
+.contact-wrapper {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: stretch; /* Makes map and form equal height */
+}
+
+.map-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--primary); /* Yellow border to match branding */
+    background: var(--dark);
+}
+.map-container iframe {
+    flex-grow: 1; /* Ensures map takes up remaining space */
+    min-height: 350px;
+}
+
+.form-container {
+    flex: 1;
+    text-align: left;
+    /* Styles already exist in your file, just ensuring flex-basis here */
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 992px) {
+    .contact-wrapper {
+        flex-direction: column; /* Stacks the map and form */
+    }
+    
+    .map-container {
+        height: 300px; /* Smaller height for mobile screens */
+        min-height: auto;
+        margin-bottom: 20px; /* Space between map and form when stacked */
+    }
+}
+
 /* --- FOOTER --- */
 footer {
     background: #000;
