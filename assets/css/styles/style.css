@@ -1,0 +1,415 @@
+/* --- RESET & VARIABLES --- */
+:root {
+    --primary: #FFD700; /* Rust Orange */
+    --dark: #1a1a1a;
+    --darker: #111111;
+    --light: #f4f4f4;
+    --gray: #333333;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--darker);
+    color: var(--light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+/* --- LOGO --- */
+.logo {
+    display: flex;
+    align-items: center;
+    /* This ensures the logo container doesn't force the nav to be too tall */
+    height: 100%; 
+}
+
+
+/* Optional: Logo hover effect */
+.logo img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 2px var(--primary));
+}
+/* --- MOBILE LOGO SHRINK --- */
+@media (max-width: 768px) {
+    .logo img {
+        /* Shrink the logo further for mobile screens */
+        width: 150px; 
+    }
+    
+    /* Ensure the nav doesn't get too tall on mobile */
+    nav {
+        padding: 10px 5%;
+    }
+}
+/* --- NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(26, 26, 26, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--light);
+}
+
+.logo span { color: var(--primary); }
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a:hover { color: var(--primary); transition: var(--transition); }
+
+.cta-btn {
+    background: var(--primary);
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+/* Update text colors for better contrast on yellow buttons */
+.cta-btn, button[type="submit"] {
+    color: #000 !important; /* Black text on yellow buttons for readability */
+}
+
+.cta-btn:hover, button[type="submit"]:hover {
+    background: var(--light);
+    color: var(--dark) !important;
+}
+
+/* Ensure icons and accents pop */
+.card i, .section-title span, .logo span {
+    color: var(--primary);
+}
+/* .cta-btn:hover { background: #fff; color: var(--primary); } */
+
+/* Mobile Menu */
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.6;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+    z-index: -1;
+}
+
+.hero-content {
+    z-index: 1;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* --- SERVICES CARDS (Strict 3-Column Layout) --- */
+.services {
+    padding: 80px 5%;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 1.7rem;
+}
+
+.section-title span { border-bottom: 3px solid var(--primary); }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards across */
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--gray);
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.card h3 { margin-bottom: 15px; }
+
+/* --- ABOUT SECTION --- */
+.about {
+    padding: 80px 5%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    background: var(--darker);
+}
+
+.about-text { flex: 1; min-width: 300px; }
+.about-text h2 { margin-bottom: 20px; font-size: 2.5rem; }
+.about-text p { margin-bottom: 20px; color: #ccc; }
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    height: 400px;
+    background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80') center/cover;
+    border-radius: 8px;
+    box-shadow: 20px 20px 0 var(--primary);
+}
+
+/* --- ASYMMETRICAL GALLERY --- */
+.gallery-section {
+    padding: 80px 5%;
+    background: var(--dark);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.1); }
+
+.g-wide { grid-column: span 2; }
+.g-tall { grid-row: span 2; }
+.g-big { grid-column: span 2; grid-row: span 2; }
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid var(--primary);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 3rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* --- CONTACT SECTION --- */
+.contact {
+    padding: 80px 5%;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.form-group { margin-bottom: 20px; text-align: left; }
+
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #555;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+button[type="submit"]:hover { background: #e05e2b; }
+
+/* --- FOOTER --- */
+footer {
+    background: #000;
+    padding: 50px 5% 20px;
+    color: #888;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    gap: 30px;
+}
+
+.footer-col h4 { color: #fff; margin-bottom: 20px; }
+
+.social-links a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #fff;
+}
+
+.social-links a:hover { color: var(--primary); }
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE --- */
+/* Tablet: Cards go 2 across */
+@media (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+/* Mobile: Nav collapse, Cards stack 1 across */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--dark);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav-links.active { display: flex; }
+    .hamburger { display: block; color: #fff; }
+
+    .hero-content h1 { font-size: 2.5rem; }
+    
+    .card-grid { grid-template-columns: 1fr; }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .g-wide, .g-big { grid-column: span 2; }
+}
