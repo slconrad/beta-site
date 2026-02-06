@@ -194,12 +194,14 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 3px solid var(--primary);
 }
 
 .card:hover {
     transform: translateY(-10px);
-    border-color: var(--primary);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border-color: rgba(255, 215, 0, 0.3); /* Slight yellow tint on the whole border */
+    border-bottom: 3px solid var(--light); /* Change line color on hover for a dynamic effect */
 }
 
 .card i {
